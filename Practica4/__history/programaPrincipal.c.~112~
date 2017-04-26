@@ -49,7 +49,8 @@ void main(void)
       printf("Calculadora Aritmetica \r\r");
       printf("Ingresa el primer operando \r");    //Indica al usuario que ingrese el primer operando
            
-      while(/*(!kbhit()) || */((Bufer[posicion-1]!=0x0D) && (Bufer[posicion-1]!=0x0A) && (posicion-1<tamanoBufer)));                          //Toque de tecla
+      while(/*(!kbhit()) || */(((Bufer[posicion-1]!=13) || (Bufer[posicion-1]!=10)&& (posicion-1<tamanoBufer)));                          //Toque de tecla
+      
       if(Bufer[posicion-1]==13)    Bufer[posicion-1]=0;
       if(banderaError)
       {

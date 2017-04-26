@@ -36,7 +36,7 @@ void main(void)
    SETUP_ADC_PORTS(NO_ANALOGS);
    //Variables
    inicio:   //Punto de retorno
-   
+   posicion=0;
    float primerOperando=0, segundoOperando=0, resultado=0;
    char operacion='0';
    ////
@@ -48,17 +48,17 @@ void main(void)
       printf("Practica No. 4\r");
       printf("Calculadora Aritmetica \r\r");
       printf("Ingresa el primer operando \r");    //Indica al usuario que ingrese el primer operando
-           
-      while(/*(!kbhit()) || */((Bufer[posicion-1]!=0x0D) && (Bufer[posicion-1]!=0x0A) && (posicion-1<tamanoBufer)));                          //Toque de tecla
+                                 
+      while((!kbhit()) || ((Bufer[posicion-1]!=13) && (posicion-1<tamanoBufer)));                          //Toque de tecla
       if(Bufer[posicion-1]==13)    Bufer[posicion-1]=0;
       if(banderaError)
       {
          printf("Dato incorrecto");
          goto inicio;
       }
+      limpiarBufer();
       posicion=0;
       primerOperando=atof(Bufer);                 //Asigna la cifra casteandola a un flotante, a primer operando en "primerOperando"
-      limpiarBufer();
       //enable_interrupts(int_rda);
       printf("%4.4f\r",primerOperando);              //Muestra el operando ingresado
       printf("Ingresa el segundo operando \r");   //Indica al usuario que ingrese el segundo operando
@@ -72,11 +72,9 @@ void main(void)
       }
       segundoOperando=atof(Bufer);                //Asigna la cifra casteandola a un flotante, a segundo operando en "segundoOperando"
       posicion=0;
-      printf("%4.4f\r",segundoOperando);              //Muestra el operando ingresado
       limpiarBufer();
+      printf("%4.4f\r",segundoOperando);             //Muestra el operando ingresado
       //enable_interrupts(int_rda);
-      //printf("%4.4f\r",segundoOperando);             //Muestra el operando ingresado
-      //Pide Operacion
       printf("Seleccione una operacion: \r 1)Suma  2)Resta  3)Multiplicacion  4)Division \r");    //Indica al usuario que selecione segun su número, una operación 
       while(!kbhit());                          //Toque de tecla
       operacion=Bufer[0];                      //Asigna la operación casteandola a un flotante, a operacion
@@ -93,8 +91,7 @@ void main(void)
 void limpiarBufer()
 {
    int i=0;
-   for(i=0; i<tamanoBufer; i++)
+   for(i; i<tamanoBufer; i++)
    {
       Bufer[i]=0;
    }
-}

@@ -5,15 +5,15 @@
 #use delay(clock=16000000)
 #use RS232(BAUD=9600,BITS=8,PARITY=N,XMIT=PIN_C6,RCV=PIN_C7,STOP=1)  
 #use standard_io(b)
-#define tamanoBufer 11
+
 //Variables globales
+int tamanoBufer;
 char Bufer[11];
 int banderaError=0;
 int posicion=0;
 #int_rda
 void rda_isr()
-{     
-      banderaError=0;
+{
       Bufer[posicion]=getc();
       //Abilitar interrupción TMR0       
       //enable_interrupts(int_TMR0);
@@ -26,7 +26,7 @@ void rda_isr()
    //Desabiitar interrupción TMR0
    posicion++;
 }
-void limpiarBufer();
+
 void main(void)
 {
    //Configuraciones
@@ -36,21 +36,19 @@ void main(void)
    SETUP_ADC_PORTS(NO_ANALOGS);
    //Variables
    inicio:   //Punto de retorno
-   
+   posicion=0;
    float primerOperando=0, segundoOperando=0, resultado=0;
    char operacion='0';
    ////
    while(true)
    {   
-      posicion=0;
-      limpiarBufer();
       //enable_interrupts(int_rda);
       printf("Practica No. 4\r");
       printf("Calculadora Aritmetica \r\r");
       printf("Ingresa el primer operando \r");    //Indica al usuario que ingrese el primer operando
-           
-      while(/*(!kbhit()) || */((Bufer[posicion-1]!=0x0D) && (Bufer[posicion-1]!=0x0A) && (posicion-1<tamanoBufer)));                          //Toque de tecla
-      if(Bufer[posicion-1]==13)    Bufer[posicion-1]=0;
+      tamanoBufer=10;                             //Asigna tananoBufer a 10 
+      while((!kbhit()) || ((Bufer[posicion-1]!=13) && (posicion-1<tamanoBufer)));                          //Toque de tecla
+      if(Bufer[posicion]==13)    Bufer[posicion]=0;
       if(banderaError)
       {
          printf("Dato incorrecto");
@@ -58,26 +56,17 @@ void main(void)
       }
       posicion=0;
       primerOperando=atof(Bufer);                 //Asigna la cifra casteandola a un flotante, a primer operando en "primerOperando"
-      limpiarBufer();
       //enable_interrupts(int_rda);
-      printf("%4.4f\r",primerOperando);              //Muestra el operando ingresado
+      printf("%f\r",primerOperando);              //Muestra el operando ingresado
       printf("Ingresa el segundo operando \r");   //Indica al usuario que ingrese el segundo operando
-      
+      tamanoBufer=10;                             //Asigna tananoBufer a 10 
       while((!kbhit()) || ((Bufer[posicion-1]!=13) && (posicion-1<tamanoBufer)));                          //Toque de tecla        
-      if(Bufer[posicion-1]==13)    Bufer[posicion-1]=0;
-      if(banderaError)
-      {
-         printf("Dato incorrecto");
-         goto inicio;
-      }
       segundoOperando=atof(Bufer);                //Asigna la cifra casteandola a un flotante, a segundo operando en "segundoOperando"
       posicion=0;
-      printf("%4.4f\r",segundoOperando);              //Muestra el operando ingresado
-      limpiarBufer();
+      printf("%f\r",segundoOperando);             //Muestra el operando ingresado
       //enable_interrupts(int_rda);
-      //printf("%4.4f\r",segundoOperando);             //Muestra el operando ingresado
-      //Pide Operacion
-      printf("Seleccione una operacion: \r 1)Suma  2)Resta  3)Multiplicacion  4)Division \r");    //Indica al usuario que selecione segun su número, una operación 
+      printf("Seleccione una operacion: \r 1)Suma  2)Resta  3)Multiplicacion  4)Division \r");    //Indica al usuario que selecione segun su número, una operación
+      tamanoBufer=1;                              //Asigna tananoBufer a 1 
       while(!kbhit());                          //Toque de tecla
       operacion=Bufer[0];                      //Asigna la operación casteandola a un flotante, a operacion
   
@@ -87,14 +76,7 @@ void main(void)
       else if(operacion=='3')   resultado=primerOperando*segundoOperando;     //multiplicacion
       else if(operacion=='4')   resultado=primerOperando/segundoOperando;     //divicion
       //Muestra resultado
-      printf("El resultado de la operacion es: %4.4f\r\r",resultado);
+      printf("El resultado de la operacion es: %f\r\r",resultado);
    } 
 }
-void limpiarBufer()
-{
-   int i=0;
-   for(i=0; i<tamanoBufer; i++)
-   {
-      Bufer[i]=0;
-   }
-}
+
