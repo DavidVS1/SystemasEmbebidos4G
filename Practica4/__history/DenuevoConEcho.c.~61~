@@ -63,7 +63,7 @@ void main(void)
    setup_timer_0(RTCC_internal|RTCC_DIV_256|RTCC_8_BIT);
    //Variables
    inicio:   //Punto de retorno
-   float32 primerOperando=0, segundoOperando=0, resultado=0;
+   float primerOperando=0, segundoOperando=0, resultado=0;
    char operacion='0';
    contador15s=0;
    ////

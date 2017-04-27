@@ -1,6 +1,6 @@
 #include <18F4620.h>
 #include <stdlib.h>
-#fuses INTRC_IO, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT 
+#fuses XT, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT 
 #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
 #use delay(clock=16000000)
 #use RS232(BAUD=9600,BITS=8,PARITY=N,XMIT=PIN_C6,RCV=PIN_C7,STOP=1)  
@@ -12,9 +12,11 @@ int datoMalo=0;
 int posicion=0;
 int terminadoRDA=0;
 int timeOut=0;
+int contador15s=0;
 #int_rda
 void rda_isr()
 {     
+      //disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
       Bufer[posicion]=getc();
       if(Bufer[posicion]==0x0A || Bufer[posicion]==0x0D)     //Si recivio enter
       {
@@ -24,12 +26,26 @@ void rda_isr()
       {
          terminadoRDA=1;
       }
-      if(((Bufer[posicion]<'0' && Bufer[posicion]>'9') && Bufer[posicion]!='-' && Bufer[posicion]!='.'))     //Si no ingreso un numero, un - o un .   El dato no es valido
+      if(((Bufer[posicion]<'0' || Bufer[posicion]>'9') && (Bufer[posicion]!='-') && (Bufer[posicion]!='.')))     //Si no ingreso un numero, un - o un .   El dato no es valido
       {
          datoMalo=1;
       }
       posicion++;
+      //enable_interrupts(int_TIMER0);                  //Habilita la interrupcion de TMR0
 
+}
+#int_timer0
+void contador_TMR0()
+{
+   /*
+   if(contador15s>=183)
+   {
+      terminadoRDA=1;
+      datoMalo=1;
+      timeOut=1;
+   }
+   contador15s++;
+   */
 }
 void limpiarBufer();
 void main(void)
@@ -39,10 +55,13 @@ void main(void)
    enable_interrupts(global);
    enable_interrupts(int_rda);
    SETUP_ADC_PORTS(NO_ANALOGS);
+   //set_timer0(0);
+   setup_timer_0(rtcc_internal|RTCC_DIV_256|RTCC_8_BIT);
    //Variables
    inicio:   //Punto de retorno
    float primerOperando=0, segundoOperando=0, resultado=0;
    char operacion='0';
+   contador15s=0;
    ////
    while(true)
    {   
@@ -58,6 +77,8 @@ void main(void)
                                                   //primerOperando
       printf("Ingresa el primer operando \r");    //Indica al usuario que ingrese el primer operando    
       While(terminadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
+      disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
+      contador15s=0;                            //Reinicia el contador15s
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
          printf("Error \r");
@@ -80,7 +101,9 @@ void main(void)
       limpiarBufer();
                                                     //segundoOperando
       printf("Ingresa el segundo operando \r");          //Indica al usuario que ingrese el segundo operando
-      While(termindadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
+      While(terminadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
+      disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
+      contador15s=0;                            //Reinicia el contador15s
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
          printf("Error \r");
@@ -104,7 +127,9 @@ void main(void)
       
                                                                  //Operacion
       printf("Seleccione una operacion: \r 1)Suma  2)Resta  3)Multiplicacion  4)Division \r");    //Indica al usuario que selecione segun su número, una operación 
-      While(termindadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
+      While(terminadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
+      disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
+      contador15s=0;                            //Reinicia el contador15s
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
          printf("Error \r");

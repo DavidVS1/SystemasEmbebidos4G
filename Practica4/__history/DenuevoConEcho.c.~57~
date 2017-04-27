@@ -63,7 +63,7 @@ void main(void)
    setup_timer_0(RTCC_internal|RTCC_DIV_256|RTCC_8_BIT);
    //Variables
    inicio:   //Punto de retorno
-   float32 primerOperando=0, segundoOperando=0, resultado=0;
+   float primerOperando=0, segundoOperando=0, resultado=0;
    char operacion='0';
    contador15s=0;
    ////
@@ -86,8 +86,7 @@ void main(void)
       contador15s=0;                            //Reinicia el contador15s
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
-         error:
-         printf("Error \r\r");
+         printf("Error \r");
          if(timeOut==1)
          {
             printf("Se ha terminado el tiempo \r\r");
@@ -99,10 +98,6 @@ void main(void)
          Bufer[posicion-1]=0;
       }
       primerOperando=atof(Bufer);                 //Asigna la cifra casteandola a un flotante, a primer operando en "primerOperando
-      if(primerOperando>9999.9999)                //Si el operando supera el valor maximo, lo manda a donde imprime Error
-      {
-         goto error;
-      }
       printf("%4.4f\r",primerOperando);              //Muestra el operando ingresado
       posicion=0;
       datoMalo=0;
@@ -129,10 +124,6 @@ void main(void)
          Bufer[posicion-1]=0;
       }
       segundoOperando=atof(Bufer);                    //Asigna la cifra casteandola a un flotante, a segundo operando en "segundoOperando"
-      if(segundoOperando>9999.9999)                //Si el operando supera el valor maximo, lo manda a donde imprime Error
-      {
-         goto error;
-      }
       printf("%4.4f\r",segundoOperando);              //Muestra el operando ingresado
       posicion=0;
       datoMalo=0;
@@ -173,7 +164,7 @@ void main(void)
       else if(operacion=='3')   resultado=primerOperando*segundoOperando;     //multiplicacion
       else if(operacion=='4')   resultado=primerOperando/segundoOperando;     //divicion
       //Muestra resultado
-      printf("El resultado de la operacion es: %f\r\r",resultado);
+      printf("El resultado de la operacion es: %4.4f\r\r",resultado);
    } 
 }
 void limpiarBufer()

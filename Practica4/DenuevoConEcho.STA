@@ -1,74 +1,77 @@
 
-ROM used:   4086/65536 (6%)
-            4086/65536 (6%) including unused fragments
+ROM used:   4474/65536 (7%)
+            4474/65536 (7%) including unused fragments
 
             1.5 Average locations per line
-            7.1 Average locations per statement
+            7.3 Average locations per statement
 
-RAM used:   45/3968 (1%) at main() level
-            93/3968 (2%) worst case
+RAM used:   48/3968 (1%) at main() level
+            96/3968 (2%) worst case
 
 Stack used: 3 worst case (2 in main + 1 for interrupts)
 Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  140    92  16  DenuevoConEcho.c
+  188   129  21  DenuevoConEcho.c
   834     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h
- 1351   359  62  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h
+ 1351   359  59  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h
    32     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h
-  423   125  22  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h
+  423   125  20  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h
    28     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h
+   61     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\float.h
 ----- -----
- 2808   576 Total
+ 2917   613 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
 0    242   3   11             @MULFF
 0     54   1    2             @ITOF
-0    618   8   16             @ADDFF
+0    618   7   16             @ADDFF
 0    346   4   14             @DIVFF
-0    562   7   19  1542 12.4  strtof
-0    168   2    2   424  7.0  rda_isr
-0    936  11    2  2807  8.3  MAIN
-0     16   0    0             @const930
+0    562   6   19  1542 12.4  strtof
+0    268   3    2   799  7.2  rda_isr
+0     36   0    0    96  2.9  contador_TMR0
+0   1056  12    2  3675  9.3  MAIN
+0     16   0    0             @const933
 0     34   0    2             @PSTRINGC_9600_31766_31767
-0     26   0    0             @const932
-0     30   0    0             @const933
-0      8   0    0             @const934
 0     26   0    0             @const935
+0     30   0    0             @const936
+0     10   0    0             @const938
+0     30   0    0             @const939
+0    118   1   10             @FLT
 0     64   1    5             @FTOSD
 0    142   2   13             @DIV3232
-0    386   5   13             @PRINTF_L32D_9600_31766_31767FPFPF
-0     30   0    0             @const945
-0      8   0    0             @const946
-0     26   0    0             @const947
-0     76   1    0             @const949
-0      8   0    0   114  3.4  @const950
-0     26   0    0   114  3.4  @const951
-0     42   1    0             @const952
-0     34   0    3             @PSTRINGCN_9600_31766_31767
+0    386   4   13             @PRINTF_L32D_9600_31766_31767FPFPF
+0     30   0    0             @const952
+0      8   0    0             @const953
+0     26   0    0             @const954
+0     76   1    0   114  3.4  @const956
+0      8   0    0             @const957
+0     26   0    0             @const958
+0     38   0    0   114  3.4  @const959
+0     34   0    3   114  3.4  @PSTRINGCN_9600_31766_31767
 0     32   0    3   114  3.4  limpiarBufer
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               6
-    Statements              576
-    Comments                958
-    Volume (V)              6585
-    Difficulty (D)          36.8
-    Effort to implement (E) 242262
-    Time to implement (T)   3 hours, 44 minutes
-    Est Delivered Bugs (B)  1
-    Cyclomatic Complexity   31
-    Maintainability (MI)    93
+    Functions               8
+    Statements              613
+    Comments                982
+    Volume (V)              8627
+    Difficulty (D)          44.9
+    Effort to implement (E) 387098
+    Time to implement (T)   5 hours, 58 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   36
+    Maintainability (MI)    14
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
-00008-00094   142  0  
-00096-0FFFE  3940  61446  
+00008-000A0   154  0  
+000A2-0FFFE  4316  61058  
 
 
 

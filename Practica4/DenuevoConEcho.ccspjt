@@ -11,9 +11,9 @@ Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers
 Type=4
 [mru-list]
 1=DenuevoConEcho.c
-[Units]
-Count=1
-1=DenuevoConEcho (main)
 [Opened Files]
 1=DenuevoConEcho.c
 2=
+[Units]
+Count=1
+1=DenuevoConEcho (main)

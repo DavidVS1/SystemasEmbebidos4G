@@ -63,7 +63,7 @@ void main(void)
    setup_timer_0(RTCC_internal|RTCC_DIV_256|RTCC_8_BIT);
    //Variables
    inicio:   //Punto de retorno
-   float32 primerOperando=0, segundoOperando=0, resultado=0;
+   float primerOperando=0, segundoOperando=0, resultado=0;
    char operacion='0';
    contador15s=0;
    ////
@@ -173,7 +173,7 @@ void main(void)
       else if(operacion=='3')   resultado=primerOperando*segundoOperando;     //multiplicacion
       else if(operacion=='4')   resultado=primerOperando/segundoOperando;     //divicion
       //Muestra resultado
-      printf("El resultado de la operacion es: %f\r\r",resultado);
+      printf("El resultado de la operacion es: %.4f\r\r",resultado);
    } 
 }
 void limpiarBufer()
