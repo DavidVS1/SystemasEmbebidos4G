@@ -20,10 +20,19 @@ void rda_isr()
       {
          terminadoRDA=1;
       }
-      if(!(posicion<tamanoBufer-1))                         //Si no es menor de 9 (la ultima posici髇 del vector para escribir), activa bandera para que termine la interrupci髇
+      /*Si no es menor de 9 (la ultima posici贸n del vector para escribir), 
+      activa bandera para que termine la interrupci贸n.
+      NOTA: recuerden que la interrupci贸n se atiende de forma asincrona, si no controlan el tama帽o del indice se puede
+      desbordar y causar problemas en la memoria.
+      */
+      if(!(posicion<tamanoBufer-1))                         
       {
          terminadoRDA=1;
       }
+      /*
+      Buscar si se metieron o no datos correctos no es funci贸n de la interrupci贸n. Recuerden rapidas y cortas
+      Esta validaci贸n debe de ser en otro lugar.
+      */
       if(((Bufer[posicion]<'0' && Bufer[posicion]>'9') && Bufer[posicion]!='-' && Bufer[posicion]!='.'))     //Si no ingreso un numero, un - o un .   El dato no es valido
       {
          datoMalo=1;
@@ -46,6 +55,10 @@ void main(void)
    ////
    while(true)
    {   
+      /*
+      JAMAS (en serio JAMAS) manipulamos las variables que se manipulan dentro de la interrupci贸n dentro del ciclo principal.
+      En tu caso estas bloqueando el flujo del programa pero es una p茅sima pr谩ctica.
+      */
       //Inicializamos variables a 0 y limpiamos Bufer
       posicion=0;
       datoMalo=0;
@@ -57,6 +70,10 @@ void main(void)
       printf("Calculadora Aritmetica \r\r");
                                                   //primerOperando
       printf("Ingresa el primer operando \r");    //Indica al usuario que ingrese el primer operando    
+      /*
+      Aqui estas bloqueando a que se termine la RDA, pero y si no recibe nada y super贸 el tiempo? 
+      Ocupas una funci贸n que analice todo o cambiar la orrganizaci贸n de tu programa
+      */
       While(terminadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
@@ -103,7 +120,7 @@ void main(void)
       limpiarBufer();
       
                                                                  //Operacion
-      printf("Seleccione una operacion: \r 1)Suma  2)Resta  3)Multiplicacion  4)Division \r");    //Indica al usuario que selecione segun su n鷐ero, una operaci髇 
+      printf("Seleccione una operacion: \r 1)Suma  2)Resta  3)Multiplicacion  4)Division \r");    //Indica al usuario que selecione segun su n煤mero, una operaci贸n 
       While(terminadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
@@ -118,9 +135,9 @@ void main(void)
       {
          Bufer[posicion-1]=0;
       }
-      operacion=Bufer[0];                      //Asigna la operaci髇 casteandola a un flotante, a operacion
+      operacion=Bufer[0];                      //Asigna la operaci贸n casteandola a un flotante, a operacion
   
-      //Saca resultado con los dos operadores ingresados y deacuerdo a la operaci髇 seleccionada
+      //Saca resultado con los dos operadores ingresados y deacuerdo a la operaci贸n seleccionada
       if(operacion=='1')   resultado=primerOperando+segundoOperando;          //suma
       else if(operacion=='2')   resultado=primerOperando-segundoOperando;     //resta
       else if(operacion=='3')   resultado=primerOperando*segundoOperando;     //multiplicacion
