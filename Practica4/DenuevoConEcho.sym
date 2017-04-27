@@ -1,0 +1,187 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016-017 strtok.save
+018-01B _Randseed
+01C-026 Bufer
+027     datoMalo
+028     posicion
+029     terminadoRDA
+02A     timeOut
+02B-02E MAIN.primerOperando
+02F-032 MAIN.segundoOperando
+033-036 MAIN.resultado
+037     MAIN.operacion
+038-03B @PRINTF_L32D_9600_31766_31767FPFPF.P1
+038     limpiarBufer.i
+038-039 strtof.s
+038     @PSTRINGCN_9600_31766_31767.P1
+038     MAIN.@SCRATCH1
+038     @PSTRINGC_9600_31766_31767.@SCRATCH1
+039     MAIN.@SCRATCH2
+039     @PSTRINGC_9600_31766_31767.@SCRATCH2
+039     @PSTRINGCN_9600_31766_31767.@SCRATCH1
+039     limpiarBufer.@SCRATCH1
+03A-03B strtof.endptr
+03A     @PSTRINGCN_9600_31766_31767.@SCRATCH2
+03A     limpiarBufer.@SCRATCH2
+03C-03F strtof.pow10
+03C     @PRINTF_L32D_9600_31766_31767FPFPF.P1
+03D     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH1
+03E     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH2
+03F     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH3
+040-043 strtof.result
+040     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH4
+041     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH5
+042     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH6
+043     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH7
+044.0   strtof.skip
+044.1   strtof.sign
+044.2   strtof.point
+044     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH8
+045     strtof.c
+045-048 @DIV3232.P1
+045-048 @FTOSD.P2
+046     strtof.ptr
+047-04A @MULFF.P1
+047     strtof.@SCRATCH1
+048     strtof.@SCRATCH2
+049-04C @DIV3232.P1
+049     strtof.@SCRATCH3
+049     @FTOSD.@SCRATCH1
+04A     strtof.@SCRATCH4
+04B-04E @ADDFF.P1
+04B-04E @DIVFF.P2
+04B-04E @MULFF.P3
+04B-04C @ITOF.P4
+04D     @DIV3232.@SCRATCH1
+04E     @DIV3232.@SCRATCH2
+04F-052 @ADDFF.P1
+04F-052 @DIVFF.P2
+04F     @MULFF.@SCRATCH1
+04F     @DIV3232.@SCRATCH3
+050     @MULFF.@SCRATCH2
+050     @DIV3232.@SCRATCH4
+051     @MULFF.@SCRATCH3
+051     @DIV3232.@SCRATCH5
+053     @ADDFF.@SCRATCH1
+053     @DIVFF.@SCRATCH1
+054     @ADDFF.@SCRATCH2
+054     @DIVFF.@SCRATCH2
+055     @ADDFF.@SCRATCH3
+055     @DIVFF.@SCRATCH3
+056     @ADDFF.@SCRATCH4
+056     @DIVFF.@SCRATCH4
+057     @ADDFF.@SCRATCH5
+057     @DIVFF.@SCRATCH5
+058     @ADDFF.@SCRATCH6
+058     @DIVFF.@SCRATCH6
+059     @ADDFF.@SCRATCH7
+05A     @ADDFF.@SCRATCH8
+05B     rda_isr.@SCRATCH1
+05C     rda_isr.@SCRATCH2
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000096  rda_isr
+00013E  @const930.call
+00014E  @const932.call
+000168  @const933.call
+000186  @const934.call
+00018E  @const935.call
+0001A8  @const945.call
+0001C6  @const946.call
+0001CE  @const947.call
+0001E8  @const949.call
+000234  @const950.call
+00023C  @const951.call
+000256  @const952.call
+000280  limpiarBufer
+0002A0  @PSTRINGC_9600_31766_31767
+0002C2  @MULFF
+0003B4  @ITOF
+0003EA  @DIVFF
+000544  @ADDFF
+0007AE  strtof
+0009E0  @FTOSD
+000A20  @DIV3232
+000AAE  @PRINTF_L32D_9600_31766_31767FPFPF
+000C30  @PSTRINGCN_9600_31766_31767
+000C52  MAIN
+000C52  @cinit1
+000C88  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+0652  inicio
+
+Project Directory:
+    C:\Users\luis\Documents\4Semestre\Embebidos\SystemasEmbebidos4G\Practica4\
+
+Project Files:
+    DenuevoConEcho.c                                        [26-abr.-17 19:37  CRC=9D999A84]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep.-13 17:34  CRC=044A57BA]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun.-11 15:39  CRC=0B6669CF]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul.-10 10:27  CRC=897CEC6C]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul.-11 11:13  CRC=23EDEC8F]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 14:55  CRC=2D1F019F]
+
+Source signature=B4F33846
+
+Units:
+    DenuevoConEcho (main)
+
+Compiler Settings:
+    Processor:      PIC18F4620
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   DenuevoConEcho.xsym
+    Errors:      DenuevoConEcho.err
+    Ext Symbols: DenuevoConEcho.esym
+    INHX32:      DenuevoConEcho.hex
+    Symbols:     DenuevoConEcho.sym
+    List:        DenuevoConEcho.lst
+    Debug/COFF:  DenuevoConEcho.cof
+    Project:     DenuevoConEcho.ccspjt
+    Call Tree:   DenuevoConEcho.tre
+    Statistics:  DenuevoConEcho.STA
