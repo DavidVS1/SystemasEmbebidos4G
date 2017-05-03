@@ -36,7 +36,7 @@
 03A     MAIN.operacion
 03B-03E @PRINTF_L32D_9600_31766_31767FPFPF.P1
 03B-03E @FLT.P2
-03B     limpiarBufer.i
+03B     limpiarBufer.pos
 03B     @PSTRINGCN_9600_31766_31767.P1
 03B-03C strtof.s
 03B     MAIN.@SCRATCH1
@@ -128,50 +128,49 @@ ROM Allocation:
 0000A2  rda_isr
 0001AE  contador_TMR0
 0001D2  @const933.call
-0001E2  @const935.call
-0001FC  @const936.call
-00021A  @const938.call
-000224  @const939.call
-000242  @const952.call
-000260  @const953.call
-000268  @const954.call
-000282  @const956.call
-0002CE  @const957.call
-0002D6  @const958.call
-0002F0  @const959.call
-000316  limpiarBufer
-000336  @PSTRINGC_9600_31766_31767
-000358  @MULFF
-00044A  @ITOF
-000480  @DIVFF
-0005DA  @ADDFF
-000844  strtof
-000A76  @FLT
-000AEC  @FTOSD
-000B2C  @DIV3232
-000BBA  @PRINTF_L32D_9600_31766_31767FPFPF
-000D3C  @PSTRINGCN_9600_31766_31767
-000D5E  MAIN
-000D5E  @cinit1
-000D90  @cinit2
+0001E4  @const935.call
+000200  @const936.call
+00021E  @const938.call
+00022A  @const939.call
+00024A  @const952.call
+00026A  @const953.call
+000274  @const954.call
+000294  @const956.call
+0002E2  @const957.call
+0002EC  @const958.call
+00030C  @const959.call
+000334  limpiarBufer
+000354  @PSTRINGC_9600_31766_31767
+000376  @MULFF
+000468  @ITOF
+00049E  @DIVFF
+0005F8  @ADDFF
+000862  strtof
+000A94  @FLT
+000B0A  @FTOSD
+000B4A  @DIV3232
+000BD8  @PRINTF_L32D_9600_31766_31767FPFPF
+000D5A  @PSTRINGCN_9600_31766_31767
+000D7A  MAIN
+000D7A  @cinit1
+000DAC  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
-06DB  inicio
-070B  error
+06E9  inicio
+071A  error
 
 Project Directory:
     C:\Users\luis\Documents\4Semestre\Embebidos\SystemasEmbebidos4G\Practica4\
 
 Project Files:
-    DenuevoConEcho.c                                        [27-abr.-17 00:27  CRC=5832EF1F]
+    DenuevoConEcho.c                                        [27-abr.-17 22:16  CRC=24DC57F1]
     ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep.-13 17:34  CRC=044A57BA]
     ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun.-11 15:39  CRC=0B6669CF]
     ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul.-10 10:27  CRC=897CEC6C]
     ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul.-11 11:13  CRC=23EDEC8F]
     ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 14:55  CRC=2D1F019F]
-    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\float.h [01-ago.-07 15:50  CRC=8BC4079E]
 
-Source signature=59F59A7E
+Source signature=3C35F5B3
 
 Units:
     DenuevoConEcho (main)

@@ -1,19 +1,14 @@
 #include <18F4620.h>
-#include <stdlib.h>
 #fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT 
 #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
 #use delay(clock=16000000)
 #use RS232(BAUD=9600,BITS=8,PARITY=N,XMIT=PIN_C6,RCV=PIN_C7,STOP=1)  
 #use standard_io(c)
+#include "Librerias\matematicas.h"
+#include "Librerias\ingresoDatos.h"
 #define tamanoBufer 11
-//Variables globales
-char Bufer[11];
-int datoMalo=0;
-int posicion=0;
-int terminadoRDA=0;
-int timeOut=0;
-unsigned int16 contador15s=0;
-int8 punto=0;
+void limpiarBufer(int Bufer[] ,int tamanoBufer);
+
 #int_rda
 void rda_isr()
 {     
@@ -51,7 +46,8 @@ void contador_TMR0()
    }
    contador15s++;
 }
-void limpiarBufer();
+
+
 void main(void)
 {
    //Configuraciones del microcontrolador
@@ -62,10 +58,17 @@ void main(void)
    set_timer0(256);
    setup_timer_0(RTCC_internal|RTCC_DIV_256|RTCC_8_BIT);
    //Variables
+   
 inicio:   //Punto de retorno
    float32 primerOperando=0, segundoOperando=0, resultado=0;
+   char Bufer[11];
+   int datoMalo=0;
+   int posicion=0;
+   int terminadoRDA=0;
+   int timeOut=0;
+   unsigned int16 contador15s=0;
+   int8 punto=0;
    char operacion='0';
-   contador15s=0;
    ////
    while(true)
    {   
@@ -75,17 +78,14 @@ inicio:   //Punto de retorno
       terminadoRDA=0;
       timeOut=0;
       punto=0;
-      limpiarBufer();
+      limpiarBufer(Bufer,sizeof(Bufer));
       
       printf("Practica No. 4 \n\r");
       printf("Calculadora Aritmetica \n\n\r\r");
                                                   //primerOperando
-      printf("Ingresa el primer operando \n\r");    //Indica al usuario que ingrese el primer operando   
-      enable_interrupts(int_TIMER0);                  //Habilita la interrupcion de TMR0
-      While(terminadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
-      disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
-      contador15s=0;                            //Reinicia el contador15s
-      //Validaciones
+      printf("Ingresa el primer operando \n\r");    //Indica al usuario que ingrese el primer operando
+      ingresarDatos(Bufer,terminadoRDA,contador15s,sizeof(Bufer),datoMalo,punto,posicion);                                          
+      ///Validaciones
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
 error:
@@ -115,13 +115,10 @@ error:
       terminadoRDA=0;
       timeOut=0;
       punto=0;
-      limpiarBufer();
+      limpiarBufer(Bufer,sizeof(Bufer));
                                                      //segundoOperando
       printf("Ingresa el segundo operando \n\r");    //Indica al usuario que ingrese el segundo operando
-      enable_interrupts(int_TIMER0);                 //Habilita la interrupcion de TMR0
-      While(terminadoRDA==0);                       //Mientras no aya terminado de recivir la trama se queda ciclado
-      disable_interrupts(int_TIMER0);               //Desactiva la interrupción de TMR0
-      contador15s=0;                                //Reinicia el contador15s
+      ingresarDatos(Bufer,terminadoRDA,contador15s,sizeof(Bufer),datoMalo,punto,posicion);
       //Validaciones
       if(datoMalo==1)                              //Si el dato ingresado no es correcto
       {
@@ -151,14 +148,11 @@ error:
       terminadoRDA=0;
       timeOut=0;
       punto=0;
-      limpiarBufer();
+      limpiarBufer(Bufer,sizeof(Bufer));
       
                                                                  //Operacion
       printf("Seleccione una operacion: \n\r 1)Suma  2)Resta  3)Multiplicacion  4)Division \n\r");    //Indica al usuario que selecione segun su número, una operación
-      enable_interrupts(int_TIMER0);                  //Habilita la interrupcion de TMR0
-      While(terminadoRDA==0);                         //Mientras no haya terminado de recibir la trama se queda ciclado
-      disable_interrupts(int_TIMER0);                 //Desactiva la interrupción de TMR0
-      contador15s=0;                                  //Reinicia el contador15s
+      ingresarDatos(Bufer,terminadoRDA,contador15s,sizeof(Bufer),datoMalo,punto,posicion);
       //Validaciones
       if(Bufer[0]==0)                                 //Si no ingreso nada, activa bandera datoMalo
       {
@@ -183,23 +177,20 @@ error:
       terminadoRDA=0;
       timeOut=0;
       punto=0;
-      limpiarBufer();
+      limpiarBufer(Bufer,sizeof(Bufer));
   
       //Saca resultado con los dos operadores ingresados y deacuerdo a la operación seleccionada
-      if(operacion=='1')        resultado=primerOperando+segundoOperando;      //suma
-      else if(operacion=='2')   resultado=primerOperando-segundoOperando;     //resta
-      else if(operacion=='3')   resultado=primerOperando*segundoOperando;     //multiplicacion
-      else if(operacion=='4')   resultado=primerOperando/segundoOperando;     //divicion
+      calculos(operacion,primerOperando,segundoOperando, &resultado);
       //Muestra resultado
       if((segundoOperando==0 && operacion=='4') || !(operacion>'0' && operacion<'5'))           //Si quiere dividir entre 0. O no haya seleccionado ninguna operación, se va ha error
       {
          goto error;
       }
       printf("El resultado de la operacion es: %f\n\n\r\r",resultado);
-      resultado=0;
+      //resultado=0;
    } 
 }
-void limpiarBufer()
+void limpiarBufer(int Bufer[] ,int tamanoBufer)
 {
    int pos=0;                          //Variable para cambiar la posicion del vector Bufer
    for(pos=0; pos<tamanoBufer; pos++)
@@ -207,3 +198,5 @@ void limpiarBufer()
       Bufer[pos]=0;
    }
 }
+
+

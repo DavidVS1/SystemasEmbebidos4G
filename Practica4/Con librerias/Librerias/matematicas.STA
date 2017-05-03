@@ -1,0 +1,44 @@
+
+ROM used:   22/65536 (0%)
+            22/65536 (0%) including unused fragments
+
+            0.0 Average locations per line
+            22.0 Average locations per statement
+
+RAM used:   4/3968 (0%) at main() level
+            4/3968 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+    6     0   0  matematicas.c
+  834     0   0  ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h
+----- -----
+  840     1 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     18  41    0     3  0.0  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              1
+    Comments                149
+    Volume (V)              4
+    Difficulty (D)          0.0
+    Effort to implement (E) 0
+    Time to implement (T)   0 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    167
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-0FFFE    18  65514  
+
+
+

@@ -86,6 +86,10 @@ inicio:   //Punto de retorno
       disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
       contador15s=0;                            //Reinicia el contador15s
       //Validaciones
+      if(Bufer[0]==0)                                 //Si no ingreso nada, activa bandera datoMalo
+      {
+         datoMalo=1;
+      }
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
 error:
@@ -99,10 +103,6 @@ error:
        if(Bufer[posicion-1]==0x0A || Bufer[posicion-1]==0x0D)     //Si la ultima tecla presionada fue enter, la hace igual a NULL
       {
          Bufer[posicion-1]=0;
-      }
-      if(Bufer[0]==0)                                 //Si no ingreso nada, lo manda a error
-      {
-         goto error;
       }
       primerOperando=atof(Bufer);                                //Asigna la cifra casteandola a un flotante, a primer operando en "primerOperando
       if(primerOperando>9999.9999 || primerOperando<-9999.9999)          //Si el operando sale del valor permitido, lo manda a donde imprime Error
@@ -123,6 +123,10 @@ error:
       disable_interrupts(int_TIMER0);               //Desactiva la interrupción de TMR0
       contador15s=0;                                //Reinicia el contador15s
       //Validaciones
+      if(Bufer[0]==0)                               //Si no ingreso nada, activa bandera datoMalo
+      {
+         datoMalo=1;
+      }
       if(datoMalo==1)                              //Si el dato ingresado no es correcto
       {
          printf("Error \n\r");
@@ -135,10 +139,6 @@ error:
       if(Bufer[posicion-1]==0x0A || Bufer[posicion-1]==0x0D)     //Si la ultima tecla presionada fue enter, la hace igual a NULL
       {
          Bufer[posicion-1]=0;
-      }
-      if(Bufer[0]==0)                                 //Si no ingreso nada, lo manda a error
-      {
-         goto error;
       }
       segundoOperando=atof(Bufer);                    //Asigna la cifra casteandola a un flotante, a segundo operando en "segundoOperando"
       if(segundoOperando>9999.9999 || primerOperando<-9999.9999)              //Si el operando sale del valor permitido, lo manda a donde imprime Error

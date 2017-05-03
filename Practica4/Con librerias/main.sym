@@ -1,0 +1,209 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016-017 strtok.save
+018-01B _Randseed
+01C-026 Bufer
+027     datoMalo
+028     posicion
+029     terminadoRDA
+02A     timeOut
+02B-02C contador15s
+02D     punto
+02E     tamanoBufer
+02F-032 MAIN.primerOperando
+033-036 MAIN.segundoOperando
+037-03A MAIN.resultado
+03B-03E MAIN.operacion
+03F-042 calculos.operacion
+03F     @PSTRINGCN_9600_31766_31767.P1
+03F     buscandoErrores.error
+03F-042 @PRINTF_L32D_9600_31766_31767FPFPF.P1
+03F     limpiarBufer.pos
+03F     MAIN.@SCRATCH1
+040-043 buscandoErrores.Operando
+040     limpiarBufer.@SCRATCH1
+040     @PSTRINGCN_9600_31766_31767.@SCRATCH1
+041     limpiarBufer.@SCRATCH2
+041     @PSTRINGCN_9600_31766_31767.@SCRATCH2
+043-046 calculos.primerOperando
+043     @PRINTF_L32D_9600_31766_31767FPFPF.P1
+044-047 valorIngresado.Operando
+044     buscandoErrores.@SCRATCH1
+044     @PSTRINGC_9600_31766_31767.@SCRATCH1
+044     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH1
+045     buscandoErrores.@SCRATCH2
+045     @PSTRINGC_9600_31766_31767.@SCRATCH2
+045     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH2
+046     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH3
+047-04A calculos.segundoOperando
+047     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH4
+048-049 strtof.s
+048     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH5
+049     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH6
+04A-04B strtof.endptr
+04A     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH7
+04B     @PRINTF_L32D_9600_31766_31767FPFPF.@SCRATCH8
+04C-04F @FTOSD.P1
+04C-04F strtof.pow10
+04C-04F @DIV3232.P1
+04F-052 @FLT.P1
+050-053 strtof.result
+050-053 @DIV3232.P1
+050     @FTOSD.@SCRATCH1
+053-056 @FLT.P1
+054.0   strtof.skip
+054.1   strtof.sign
+054.2   strtof.point
+054     @DIV3232.@SCRATCH1
+055     strtof.c
+055     @DIV3232.@SCRATCH2
+056     strtof.ptr
+056     @DIV3232.@SCRATCH3
+057-05A @MULFF.P1
+057     strtof.@SCRATCH1
+057     @FLT.@SCRATCH1
+057     @DIV3232.@SCRATCH4
+058     strtof.@SCRATCH2
+058     @FLT.@SCRATCH2
+058     @DIV3232.@SCRATCH5
+059     strtof.@SCRATCH3
+05A     strtof.@SCRATCH4
+05B-05C @ITOF.P1
+05B-05E @MULFF.P2
+05B-05E @ADDFF.P3
+05B-05E @DIVFF.P4
+05F-062 @DIVFF.P1
+05F-062 @ADDFF.P2
+05F     @MULFF.@SCRATCH1
+060     @MULFF.@SCRATCH2
+061     @MULFF.@SCRATCH3
+063     @ADDFF.@SCRATCH1
+063     @DIVFF.@SCRATCH1
+064     @ADDFF.@SCRATCH2
+064     @DIVFF.@SCRATCH2
+065     @ADDFF.@SCRATCH3
+065     @DIVFF.@SCRATCH3
+066     @ADDFF.@SCRATCH4
+066     @DIVFF.@SCRATCH4
+067     @ADDFF.@SCRATCH5
+067     @DIVFF.@SCRATCH5
+068     @ADDFF.@SCRATCH6
+068     @DIVFF.@SCRATCH6
+069     @ADDFF.@SCRATCH7
+06A     @ADDFF.@SCRATCH8
+06B     datosnoCorrectos.@SCRATCH1
+06B     rda_isr.@SCRATCH1
+06C     rda_isr.@SCRATCH2
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+0000A2  @const937.call
+0000AE  @const939.call
+0000CE  @const941.call
+0000DA  datosnoCorrectos
+0001C6  rda_isr
+0001EA  contador_TMR0
+00020E  @const954.call
+000220  @const955.call
+00023C  @const956.call
+00025A  @const966.call
+00027A  @const968.call
+0002C8  @const969.call
+0002D4  @const970.call
+0002FC  limpiarBufer
+00031C  @PSTRINGC_9600_31766_31767
+00033E  ingresarDatos
+000352  @MULFF
+000444  @ITOF
+00047A  @DIVFF
+0005D4  @ADDFF
+00083E  strtof
+000A72  valorIngresado
+000AA0  @FLT
+000B16  buscandoErrores
+000BEC  @FTOSD
+000C2C  @DIV3232
+000CBA  @PRINTF_L32D_9600_31766_31767FPFPF
+000E3C  @PSTRINGCN_9600_31766_31767
+000E5C  MAIN
+000E5C  @cinit1
+000E92  @cinit2
+00100E  calculos
+0136  StrtoulGO
+0136  StrtolGO
+075C  inicio
+
+Project Directory:
+    C:\Users\luis\Documents\4Semestre\Embebidos\SystemasEmbebidos4G\Practica4\Con librerias\
+
+Project Files:
+    main.c                                                  [03-may.-17 14:46  CRC=7F3A42F2]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep.-13 17:34  CRC=044A57BA]
+    Librerias\matematicas.h                                 [02-may.-17 23:11  CRC=C0901830]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun.-11 15:39  CRC=0B6669CF]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul.-10 10:27  CRC=897CEC6C]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul.-11 11:13  CRC=23EDEC8F]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 14:55  CRC=2D1F019F]
+    Librerias\ingresoDatos.h                                [03-may.-17 15:48  CRC=3D0C874B]
+
+Source signature=A41E05DB
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4620
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

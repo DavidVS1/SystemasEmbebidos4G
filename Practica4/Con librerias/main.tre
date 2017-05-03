@@ -1,0 +1,69 @@
+ÀÄmain
+   ÃÄMAIN  0/964  Ram=1
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄlimpiarBufer  0/32  Ram=3
+   ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ÃÄingresarDatos  0/20  Ram=0
+   ³  ÃÄbuscandoErrores  0/214  Ram=3
+   ³  ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ³  ÃÄvalorIngresado  0/46  Ram=4
+   ³  ³  ³  ÀÄstrtof  0/564  Ram=19
+   ³  ³  ³     ÃÄ@MULFF  0/242  Ram=11
+   ³  ³  ³     ÃÄ@ITOF  0/54  Ram=2
+   ³  ³  ³     ÃÄ@DIVFF  0/346  Ram=14
+   ³  ³  ³     ÃÄ@ADDFF  0/618  Ram=16
+   ³  ³  ³     ÃÄ@MULFF  0/242  Ram=11
+   ³  ³  ³     ÃÄ@ITOF  0/54  Ram=2
+   ³  ³  ³     ÃÄ@ADDFF  0/618  Ram=16
+   ³  ³  ³     ÀÄ@MULFF  0/242  Ram=11
+   ³  ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ³  ÀÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ÃÄvalorIngresado  0/46  Ram=4
+   ³  ³  ÀÄ*
+   ³  ÃÄ@PRINTF_L32D_9600_31766_31767FPFPF  0/386  Ram=13
+   ³  ³  ÃÄ@MULFF  0/242  Ram=11
+   ³  ³  ÃÄ@FTOSD  0/64  Ram=5
+   ³  ³  ÃÄ@DIV3232  0/142  Ram=13
+   ³  ³  ÀÄ@DIV3232  0/142  Ram=13
+   ³  ÃÄlimpiarBufer  0/32  Ram=3
+   ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ÃÄingresarDatos  0/20  Ram=0
+   ³  ÃÄbuscandoErrores  0/214  Ram=3
+   ³  ³  ÀÄ*
+   ³  ÃÄvalorIngresado  0/46  Ram=4
+   ³  ³  ÀÄ*
+   ³  ÃÄ@PRINTF_L32D_9600_31766_31767FPFPF  0/386  Ram=13
+   ³  ³  ÀÄ*
+   ³  ÃÄlimpiarBufer  0/32  Ram=3
+   ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ÃÄingresarDatos  0/20  Ram=0
+   ³  ÃÄbuscandoErrores  0/214  Ram=3
+   ³  ³  ÀÄ*
+   ³  ÃÄvalorIngresado  0/46  Ram=4
+   ³  ³  ÀÄ*
+   ³  ÃÄlimpiarBufer  0/32  Ram=3
+   ³  ÃÄcalculos  (Inline)  Ram=16
+   ³  ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ³  ÃÄ@ADDFF  0/618  Ram=16
+   ³  ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ³  ÃÄ@ADDFF  0/618  Ram=16
+   ³  ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ³  ÃÄ@MULFF  0/242  Ram=11
+   ³  ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ³  ÀÄ@DIVFF  0/346  Ram=14
+   ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ÃÄ@FLT  0/118  Ram=10
+   ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ÃÄ@PSTRINGCN_9600_31766_31767  0/32  Ram=3
+   ³  ÃÄ@PRINTF_L32D_9600_31766_31767FPFPF  0/386  Ram=13
+   ³  ³  ÀÄ*
+   ³  ÀÄ@PSTRINGCN_9600_31766_31767  0/32  Ram=3
+   ÃÄrda_isr  0/36  Ram=2
+   ³  ÀÄdatosnoCorrectos  0/236  Ram=1
+   ÀÄcontador_TMR0  0/36  Ram=0

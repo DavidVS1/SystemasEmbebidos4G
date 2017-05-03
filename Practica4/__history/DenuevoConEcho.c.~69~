@@ -80,12 +80,10 @@ inicio:   //Punto de retorno
       printf("Practica No. 4 \n\r");
       printf("Calculadora Aritmetica \n\n\r\r");
                                                   //primerOperando
-      printf("Ingresa el primer operando \n\r");    //Indica al usuario que ingrese el primer operando   
-      enable_interrupts(int_TIMER0);                  //Habilita la interrupcion de TMR0
+      printf("Ingresa el primer operando \n\r");    //Indica al usuario que ingrese el primer operando    
       While(terminadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
       disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
       contador15s=0;                            //Reinicia el contador15s
-      //Validaciones
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
 error:
@@ -100,12 +98,8 @@ error:
       {
          Bufer[posicion-1]=0;
       }
-      if(Bufer[0]==0)                                 //Si no ingreso nada, lo manda a error
-      {
-         goto error;
-      }
-      primerOperando=atof(Bufer);                                //Asigna la cifra casteandola a un flotante, a primer operando en "primerOperando
-      if(primerOperando>9999.9999 || primerOperando<-9999.9999)          //Si el operando sale del valor permitido, lo manda a donde imprime Error
+      primerOperando=atof(Bufer);                 //Asigna la cifra casteandola a un flotante, a primer operando en "primerOperando
+      if(primerOperando>9999.9999)                //Si el operando supera el valor maximo, lo manda a donde imprime Error
       {
          goto error;
       }
@@ -116,14 +110,12 @@ error:
       timeOut=0;
       punto=0;
       limpiarBufer();
-                                                     //segundoOperando
-      printf("Ingresa el segundo operando \n\r");    //Indica al usuario que ingrese el segundo operando
-      enable_interrupts(int_TIMER0);                 //Habilita la interrupcion de TMR0
-      While(terminadoRDA==0);                       //Mientras no aya terminado de recivir la trama se queda ciclado
-      disable_interrupts(int_TIMER0);               //Desactiva la interrupción de TMR0
-      contador15s=0;                                //Reinicia el contador15s
-      //Validaciones
-      if(datoMalo==1)                              //Si el dato ingresado no es correcto
+                                                    //segundoOperando
+      printf("Ingresa el segundo operando \n\r");          //Indica al usuario que ingrese el segundo operando
+      While(terminadoRDA==0);                   //Mientras no aya terminado de recivir la trama se queda ciclado
+      disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
+      contador15s=0;                            //Reinicia el contador15s
+      if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
          printf("Error \n\r");
          if(timeOut==1)
@@ -136,12 +128,8 @@ error:
       {
          Bufer[posicion-1]=0;
       }
-      if(Bufer[0]==0)                                 //Si no ingreso nada, lo manda a error
-      {
-         goto error;
-      }
       segundoOperando=atof(Bufer);                    //Asigna la cifra casteandola a un flotante, a segundo operando en "segundoOperando"
-      if(segundoOperando>9999.9999 || primerOperando<-9999.9999)              //Si el operando sale del valor permitido, lo manda a donde imprime Error
+      if(segundoOperando>9999.9999)                //Si el operando supera el valor maximo, lo manda a donde imprime Error
       {
          goto error;
       }
@@ -154,16 +142,10 @@ error:
       limpiarBufer();
       
                                                                  //Operacion
-      printf("Seleccione una operacion: \n\r 1)Suma  2)Resta  3)Multiplicacion  4)Division \n\r");    //Indica al usuario que selecione segun su número, una operación
-      enable_interrupts(int_TIMER0);                  //Habilita la interrupcion de TMR0
-      While(terminadoRDA==0);                         //Mientras no haya terminado de recibir la trama se queda ciclado
-      disable_interrupts(int_TIMER0);                 //Desactiva la interrupción de TMR0
-      contador15s=0;                                  //Reinicia el contador15s
-      //Validaciones
-      if(Bufer[0]==0)                                 //Si no ingreso nada, activa bandera datoMalo
-      {
-         datoMalo=1;
-      }
+      printf("Seleccione una operacion: \n\r 1)Suma  2)Resta  3)Multiplicacion  4)Division \n\r");    //Indica al usuario que selecione segun su número, una operación 
+      While(terminadoRDA==0);                   //Mientras no haya terminado de recibir la trama se queda ciclado
+      disable_interrupts(int_TIMER0);            //Desactiva la interrupción de TMR0
+      contador15s=0;                            //Reinicia el contador15s
       if(datoMalo==1)                            //Si el dato ingresado no es correcto
       {
          printf("Error \n\r");
@@ -186,24 +168,19 @@ error:
       limpiarBufer();
   
       //Saca resultado con los dos operadores ingresados y deacuerdo a la operación seleccionada
-      if(operacion=='1')        resultado=primerOperando+segundoOperando;      //suma
+      if(operacion=='1')   resultado=primerOperando+segundoOperando;          //suma
       else if(operacion=='2')   resultado=primerOperando-segundoOperando;     //resta
-      else if(operacion=='3')   resultado=primerOperando*segundoOperando;     //multiplicacion
+      else if(operacion=='3')   resultado=(float)primerOperando*(float)segundoOperando;     //multiplicacion
       else if(operacion=='4')   resultado=primerOperando/segundoOperando;     //divicion
       //Muestra resultado
-      if((segundoOperando==0 && operacion=='4') || !(operacion>'0' && operacion<'5'))           //Si quiere dividir entre 0. O no haya seleccionado ninguna operación, se va ha error
-      {
-         goto error;
-      }
       printf("El resultado de la operacion es: %f\n\n\r\r",resultado);
-      resultado=0;
    } 
 }
 void limpiarBufer()
 {
-   int pos=0;                          //Variable para cambiar la posicion del vector Bufer
-   for(pos=0; pos<tamanoBufer; pos++)
+   int i=0;
+   for(i=0; i<tamanoBufer; i++)
    {
-      Bufer[pos]=0;
+      Bufer[i]=0;
    }
 }

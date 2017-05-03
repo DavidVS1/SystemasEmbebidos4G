@@ -1,0 +1,50 @@
+CCS PCH C Compiler, Version 5.012, 41559               02-may.-17 14:04
+
+               Filename:   C:\Users\luis\Documents\4Semestre\Embebidos\2Parcial\Practica4\Librerias\matematicas.lst
+
+               ROM used:   22 bytes (0%)
+                           Largest free fragment is 65514
+               RAM used:   4 (0%) at main() level
+                           4 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+00000:  GOTO   0004
+.................... #include <18F4620.h> 
+.................... ///////////// Standard Header file for the PIC18F4620 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4620 
+....................  
+.................... #list 
+....................  
+....................  
+.................... void main() { 
+00004:  CLRF   FF8
+00006:  BCF    FD0.7
+00008:  MOVF   FC1,W
+0000A:  ANDLW  C0
+0000C:  IORLW  0F
+0000E:  MOVWF  FC1
+00010:  MOVLW  07
+00012:  MOVWF  FB4
+....................  
+.................... } 
+00014:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CF00   FCMEN IESO
+   Word  2: 1E1E   PUT BROWNOUT BORV21 NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

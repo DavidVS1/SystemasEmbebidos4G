@@ -1,0 +1,59 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @cinit1
+000004  main
+000014  @cinit2
+
+Project Directory:
+    C:\Users\luis\Documents\4Semestre\Embebidos\2Parcial\Practica4\Librerias\
+
+Project Files:
+    matematicas.c                                           [02-may.-17 13:17  CRC=00000000]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep.-13 17:34  CRC=044A57BA]
+
+Source signature=0894AF74
+
+Units:
+    matematicas (main)
+
+Compiler Settings:
+    Processor:      PIC18F4620
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   matematicas.xsym
+    Errors:      matematicas.err
+    Ext Symbols: matematicas.esym
+    INHX32:      matematicas.hex
+    Symbols:     matematicas.sym
+    List:        matematicas.lst
+    Debug/COFF:  matematicas.cof
+    Project:     matematicas.ccspjt
+    Call Tree:   matematicas.tre
+    Statistics:  matematicas.STA
